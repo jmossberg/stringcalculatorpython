@@ -3,13 +3,15 @@ class StringCalculatorClass:
     DELIMITER_POSITION = 2
     DEFAULT_DELIMITER = ","
     delimiter = DEFAULT_DELIMITER
+    negative_numbers = []
 
     def textToInteger(self, number):
 
         numberAsInteger = int(number)
 
         if numberAsInteger < 0:
-            raise Exception('negatives not allowed')
+            self.negative_numbers.append(numberAsInteger)
+            numberAsInteger = 0
 
         return numberAsInteger
 
@@ -51,10 +53,17 @@ class StringCalculatorClass:
     def add(self, newString):
 
         returnvalue = 0
+        self.negative_numbers = []
 
         if(len(newString) > 0):
             stringWithoutDelimiter = self.setDelimiter(newString)
             returnvalue = self.splitLines(stringWithoutDelimiter)
+            if len(self.negative_numbers) > 0:
+                strNumbers = ""
+                for number in self.negative_numbers:
+                    strNumbers += str(number) + ", "
+                strNumbers = strNumbers[0:len(strNumbers)-2]
+                raise Exception('negatives not allowed: ' + strNumbers)
 
 
         return returnvalue

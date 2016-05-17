@@ -116,19 +116,38 @@ class TestStringCalculatorClass(unittest.TestCase):
 
     def test_NegativeNumberRaisesExceptionWithMessage(self):
         # Setup
-        stringCalculatorClass = StringCalculatorClass()
-        exceptionRaised = False
-        exceptionMessage = ""
+        string_calculator_class = StringCalculatorClass()
+        exception_raised = False
+        exception_message = ""
 
         # Excercise
         try:
-            result = stringCalculatorClass.add("-1")
+            result = string_calculator_class.add("-1")
         except Exception as err:
-            exceptionMessage = err
-            exceptionRaised = True
+            exception_message = err
+            exception_raised = True
+
         # Verify
-        assert True == exceptionRaised
-        assert 'negatives not allowed' == exceptionMessage.args[0]
+        assert True == exception_raised
+        assert 'negatives not allowed: -1' == exception_message.args[0]
+
+        def test_MultipleNegativeNumbers(self):
+            # Setup
+            string_calculator_class = StringCalculatorClass()
+            exception_raised = False
+            exception_message = ""
+
+            # Excercise
+            try:
+                result = string_calculator_class.add("2,-1,4,-2")
+            except Exception as err:
+                exception_message = err
+                exception_raised = True
+
+            # Verify
+            assert True == exception_raised
+            assert 'negatives not allowed: -1, -2' == exception_message.args[0]
+
 
 if __name__ == '__main__':
     unittest.main()
