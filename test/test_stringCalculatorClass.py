@@ -113,5 +113,22 @@ class TestStringCalculatorClass(unittest.TestCase):
         # Verify
         assert True == exceptionRaised
 
+
+    def test_NegativeNumberRaisesExceptionWithMessage(self):
+        # Setup
+        stringCalculatorClass = StringCalculatorClass()
+        exceptionRaised = False
+        exceptionMessage = ""
+
+        # Excercise
+        try:
+            result = stringCalculatorClass.add("-1")
+        except Exception as err:
+            exceptionMessage = err
+            exceptionRaised = True
+        # Verify
+        assert True == exceptionRaised
+        assert 'negatives not allowed' == exceptionMessage.args[0]
+
 if __name__ == '__main__':
     unittest.main()

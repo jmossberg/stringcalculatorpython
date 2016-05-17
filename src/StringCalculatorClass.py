@@ -9,7 +9,7 @@ class StringCalculatorClass:
         numberAsInteger = int(number)
 
         if numberAsInteger < 0:
-            raise Exception
+            raise Exception('negatives not allowed')
 
         return numberAsInteger
 
