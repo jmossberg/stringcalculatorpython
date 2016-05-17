@@ -4,6 +4,14 @@ class StringCalculatorClass:
     DEFAULT_DELIMITER = ","
     delimiter = DEFAULT_DELIMITER
 
+    def textToInteger(self, number):
+
+        numberAsInteger = int(number)
+
+        if numberAsInteger < 0:
+            raise Exception
+
+        return numberAsInteger
 
     def addNonEmptyString(self, newString):
 
@@ -12,7 +20,7 @@ class StringCalculatorClass:
         numbers = newString.split(self.delimiter)
 
         for number in numbers:
-            newstringsum += int(number)
+            newstringsum += self.textToInteger(number)
 
         return newstringsum
 
