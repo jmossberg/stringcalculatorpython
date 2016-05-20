@@ -61,6 +61,8 @@ class StringCalculatorClass:
             strNumbers = strNumbers[0:len(strNumbers) - 2]
             return 'negatives not allowed: ' + strNumbers
 
+        return ""
+
     def add(self, newString):
 
         returnvalue = 0
@@ -70,12 +72,10 @@ class StringCalculatorClass:
             self.setDelimiter(newString)
             stringWithoutDelimiter = self.getStringWithoutDelimiter(newString)
             returnvalue = self.splitLines(stringWithoutDelimiter)
-            if len(self.negative_numbers) > 0:
-                strNumbers = ""
-                for number in self.negative_numbers:
-                    strNumbers += str(number) + ", "
-                strNumbers = strNumbers[0:len(strNumbers)-2]
-                raise Exception('negatives not allowed: ' + strNumbers)
 
+        error_string = self.createErrorString(self.negative_numbers)
+
+        if len(error_string) > 0:
+            raise Exception(error_string)
 
         return returnvalue
