@@ -67,24 +67,13 @@ class TestStringCalculatorClass(unittest.TestCase):
         # Verify
         assert 20 == result
 
-
-    def test_setNewDelimeter(self):
+    def test_isNewDelimiterSet(self):
         # Setup
         stringCalculatorClass = StringCalculatorClass()
 
         # Excercise
-        result = stringCalculatorClass.add("//;\n1;2;17\n5")
-
-        # Verify
-        assert 25 == result
-
-    def test_newDelimiterSet(self):
-        # Setup
-        stringCalculatorClass = StringCalculatorClass()
-
-        # Excercise
-        result1 = stringCalculatorClass.newDelimiterSet("//;\n1;2;17\n5")
-        result2 = stringCalculatorClass.newDelimiterSet("1;2;17\n5")
+        result1 = stringCalculatorClass.isNewDelimiterSet("//;\n1;2;17\n5")
+        result2 = stringCalculatorClass.isNewDelimiterSet("1;2;17\n5")
 
         # Verify
         assert True == result1
@@ -99,6 +88,37 @@ class TestStringCalculatorClass(unittest.TestCase):
 
         # Verify
         assert ';' == result
+
+    def test_getStringWithoutDelimiter(self):
+        # Setup
+        stringCalculatorClass = StringCalculatorClass()
+
+        # Excercise
+        result = stringCalculatorClass.getStringWithoutDelimiter("//;\n1,2")
+
+        # Verify
+        assert "1,2" == result
+
+    def test_CallAddWithNewDelimiter(self):
+        # Setup
+        stringCalculatorClass = StringCalculatorClass()
+
+        # Excercise
+        result = stringCalculatorClass.add("//;\n1;2;17\n5")
+
+        # Verify
+        assert 25 == result
+
+    def test_CreateNegativeErrorString(self):
+        # Setup
+        stringCalculatorClass = StringCalculatorClass()
+        negative_numbers = [-1, -2, -3]
+
+        # Excercise
+        result = stringCalculatorClass.createErrorString(negative_numbers)
+
+        # Verify
+        assert 'negatives not allowed: -1, -2, -3' == result
 
     def test_NegativeNumberRaisesException(self):
         # Setup
