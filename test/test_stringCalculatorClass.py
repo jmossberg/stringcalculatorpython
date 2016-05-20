@@ -4,7 +4,7 @@ from src.StringCalculatorClass import StringCalculatorClass
 
 
 class TestStringCalculatorClass(unittest.TestCase):
-    def test_add(self):
+    def test_addWithEmptyString(self):
         # Setup
         stringCalculatorClass = StringCalculatorClass()
 
@@ -78,7 +78,7 @@ class TestStringCalculatorClass(unittest.TestCase):
         # Verify
         assert 25 == result
 
-    def test_setNewDelimeter(self):
+    def test_newDelimiterSet(self):
         # Setup
         stringCalculatorClass = StringCalculatorClass()
 
@@ -131,22 +131,22 @@ class TestStringCalculatorClass(unittest.TestCase):
         assert True == exception_raised
         assert 'negatives not allowed: -1' == exception_message.args[0]
 
-        def test_MultipleNegativeNumbers(self):
-            # Setup
-            string_calculator_class = StringCalculatorClass()
-            exception_raised = False
-            exception_message = ""
+    def test_MultipleNegativeNumbers(self):
+        # Setup
+        string_calculator_class = StringCalculatorClass()
+        exception_raised = False
+        exception_message = ""
 
-            # Excercise
-            try:
-                result = string_calculator_class.add("2,-1,4,-2")
-            except Exception as err:
-                exception_message = err
-                exception_raised = True
+        # Excercise
+        try:
+            result = string_calculator_class.add("2,-1,4,-2")
+        except Exception as err:
+            exception_message = err
+            exception_raised = True
 
-            # Verify
-            assert True == exception_raised
-            assert 'negatives not allowed: -1, -2' == exception_message.args[0]
+        # Verify
+        assert True == exception_raised
+        assert 'negatives not allowed: -1, -2' == exception_message.args[0]
 
 
 if __name__ == '__main__':

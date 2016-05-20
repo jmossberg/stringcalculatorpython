@@ -40,7 +40,7 @@ class StringCalculatorClass:
 
         if self.newDelimiterSet(newString):
             self.delimiter = self.getNewDelimiter(newString)
-            return newString[self.DELIMITER_POSITION+1:]
+            return newString[self.DELIMITER_POSITION+2:]
 
         return newString
 
