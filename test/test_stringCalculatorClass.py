@@ -1,148 +1,148 @@
 import unittest
 
-from src.StringCalculatorClass import StringCalculatorClass
+from src.StringCalculator import StringCalculator
 
 
 class TestStringCalculatorClass(unittest.TestCase):
-    def test_addWithEmptyString(self):
+    def test_add_empty_string(self):
         # Setup
-        stringCalculatorClass = StringCalculatorClass()
+        string_calculator = StringCalculator()
 
-        # Excercise
-        result = stringCalculatorClass.add("")
+        # Exercise
+        result = string_calculator.add("")
 
         # Verify
         assert 0 == result
 
-    def test_add1(self):
+    def test_add_one(self):
         # Setup
-        stringCalculatorClass = StringCalculatorClass()
+        string_calculator = StringCalculator()
 
-        # Excercise
-        result = stringCalculatorClass.add("1")
+        # Exercise
+        result = string_calculator.add("1")
 
         # Verify
         assert 1 == result
 
 
-    def test_add2(self):
+    def test_add_two(self):
         # Setup
-        stringCalculatorClass = StringCalculatorClass()
+        string_calculator = StringCalculator()
 
-        # Excercise
-        result = stringCalculatorClass.add("2")
+        # Exercise
+        result = string_calculator.add("2")
 
         # Verify
         assert 2 == result
 
 
-    def test_add1and2(self):
+    def test_add_one_and_two(self):
         # Setup
-        stringCalculatorClass = StringCalculatorClass()
+        string_calculator = StringCalculator()
 
-        # Excercise
-        result = stringCalculatorClass.add("1,2")
+        # Exercise
+        result = string_calculator.add("1,2")
 
         # Verify
         assert 3 == result
 
 
-    def test_add5numbers(self):
+    def test_add_five_numbers(self):
         # Setup
-        stringCalculatorClass = StringCalculatorClass()
+        string_calculator = StringCalculator()
 
-        # Excercise
-        result = stringCalculatorClass.add("1,2,17,4,1,1")
+        # Exercise
+        result = string_calculator.add("1,2,17,4,1,1")
 
         # Verify
         assert 26 == result
 
-    def test_addWithNewLine(self):
+    def test_add_with_new_line(self):
         # Setup
-        stringCalculatorClass = StringCalculatorClass()
+        string_calculator = StringCalculator()
 
-        # Excercise
-        result = stringCalculatorClass.add("1,2\n17")
+        # Exercise
+        result = string_calculator.add("1,2\n17")
 
         # Verify
         assert 20 == result
 
-    def test_isNewDelimiterSet(self):
+    def test_is_new_delimiter_set(self):
         # Setup
-        stringCalculatorClass = StringCalculatorClass()
+        string_calculator = StringCalculator()
 
-        # Excercise
-        result1 = stringCalculatorClass.isNewDelimiterSet("//;\n1;2;17\n5")
-        result2 = stringCalculatorClass.isNewDelimiterSet("1;2;17\n5")
+        # Exercise
+        result1 = string_calculator._is_new_delimiter_set("//;\n1;2;17\n5")
+        result2 = string_calculator._is_new_delimiter_set("1;2;17\n5")
 
         # Verify
         assert True == result1
         assert False == result2
 
-    def test_getNewDelimeter(self):
+    def test_get_new_delimiter(self):
         # Setup
-        stringCalculatorClass = StringCalculatorClass()
+        string_calculator = StringCalculator()
 
-        # Excercise
-        result = stringCalculatorClass.getNewDelimiter("//;\n1;2;17\n5")
+        # Exercise
+        result = string_calculator._get_new_delimiter("//;\n1;2;17\n5")
 
         # Verify
         assert ';' == result
 
-    def test_getStringWithoutDelimiter(self):
+    def test_get_string_without_delimiter(self):
         # Setup
-        stringCalculatorClass = StringCalculatorClass()
+        string_calculator = StringCalculator()
 
-        # Excercise
-        result = stringCalculatorClass.getStringWithoutDelimiter("//;\n1,2")
+        # Exercise
+        result = string_calculator._get_string_without_delimiter("//;\n1,2")
 
         # Verify
         assert "1,2" == result
 
     def test_CallAddWithNewDelimiter(self):
         # Setup
-        stringCalculatorClass = StringCalculatorClass()
+        string_calculator = StringCalculator()
 
-        # Excercise
-        result = stringCalculatorClass.add("//;\n1;2;17\n5")
+        # Exercise
+        result = string_calculator.add("//;\n1;2;17\n5")
 
         # Verify
         assert 25 == result
 
-    def test_CreateNegativeErrorString(self):
+    def test_create_error_message_for_negative_numbers(self):
         # Setup
-        stringCalculatorClass = StringCalculatorClass()
+        string_calculator = StringCalculator()
         negative_numbers = [-1, -2, -3]
 
-        # Excercise
-        result = stringCalculatorClass.createErrorString(negative_numbers)
+        # Exercise
+        result = string_calculator._create_error_message(negative_numbers)
 
         # Verify
         assert 'negatives not allowed: -1, -2, -3' == result
 
-    def test_NegativeNumberRaisesException(self):
+    def test_negative_numbers_raises_exception(self):
         # Setup
-        stringCalculatorClass = StringCalculatorClass()
-        exceptionRaised = False
+        string_calculator = StringCalculator()
+        exception_raised = False
 
-        # Excercise
+        # Exercise
         try:
-            result = stringCalculatorClass.add("-1")
+            result = string_calculator.add("-1")
         except Exception:
-            exceptionRaised = True
+            exception_raised = True
         # Verify
-        assert True == exceptionRaised
+        assert True == exception_raised
 
 
     def test_NegativeNumberRaisesExceptionWithMessage(self):
         # Setup
-        string_calculator_class = StringCalculatorClass()
+        string_calculator = StringCalculator()
         exception_raised = False
         exception_message = ""
 
-        # Excercise
+        # Exercise
         try:
-            result = string_calculator_class.add("-1")
+            result = string_calculator.add("-1")
         except Exception as err:
             exception_message = err
             exception_raised = True
@@ -151,15 +151,15 @@ class TestStringCalculatorClass(unittest.TestCase):
         assert True == exception_raised
         assert 'negatives not allowed: -1' == exception_message.args[0]
 
-    def test_MultipleNegativeNumbers(self):
+    def test_multiple_negative_numbers(self):
         # Setup
-        string_calculator_class = StringCalculatorClass()
+        string_calculator = StringCalculator()
         exception_raised = False
         exception_message = ""
 
-        # Excercise
+        # Exercise
         try:
-            result = string_calculator_class.add("2,-1,4,-2")
+            result = string_calculator.add("2,-1,4,-2")
         except Exception as err:
             exception_message = err
             exception_raised = True
