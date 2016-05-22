@@ -99,7 +99,7 @@ class TestStringCalculatorClass(unittest.TestCase):
         # Verify
         assert "1,2" == result
 
-    def test_CallAddWithNewDelimiter(self):
+    def test_call_add_with_new_delimiter(self):
         # Setup
         string_calculator = StringCalculator()
 
@@ -130,6 +130,7 @@ class TestStringCalculatorClass(unittest.TestCase):
             result = string_calculator.add("-1")
         except Exception:
             exception_raised = True
+
         # Verify
         assert True == exception_raised
 
