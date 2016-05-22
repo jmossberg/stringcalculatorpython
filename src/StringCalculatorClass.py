@@ -68,10 +68,17 @@ class StringCalculatorClass:
         returnvalue = 0
         self.negative_numbers = []
 
-        if(len(newString) > 0):
+        if(len(newString) == 0):
+            return returnvalue
+
+        if(self.isNewDelimiterSet(newString)):
             self.setDelimiter(newString)
             stringWithoutDelimiter = self.getStringWithoutDelimiter(newString)
-            returnvalue = self.splitLines(stringWithoutDelimiter)
+
+        else:
+            stringWithoutDelimiter = newString
+
+        returnvalue = self.splitLines(stringWithoutDelimiter)
 
         error_string = self.createErrorString(self.negative_numbers)
 
