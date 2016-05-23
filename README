@@ -3,7 +3,7 @@ This git repository contains one possible solution in Python 3 to the StringCalc
 To import the project into PyCharm Community Edition 2016.1.2 in the "CodingDojoMossberg_160519" Virtual Machine:
 
 1. Goto Start menu - System Tools - LXTerminal
-1. Install git:
+1. Install git: `sudo apt-get install git`
    ```
    sudo apt-get install git
    ```
