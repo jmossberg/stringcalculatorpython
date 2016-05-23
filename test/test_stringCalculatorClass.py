@@ -135,7 +135,7 @@ class TestStringCalculatorClass(unittest.TestCase):
         assert True == exception_raised
 
 
-    def test_NegativeNumberRaisesExceptionWithMessage(self):
+    def test_negative_number_raises_exception_with_message(self):
         # Setup
         string_calculator = StringCalculator()
         exception_raised = False
